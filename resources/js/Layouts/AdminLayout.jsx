@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -113,16 +112,15 @@ function AdminLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton sx={{padding: 0}}>
                         <Link 
+                            as="button"
                             href={route('logout')}
                             method="post"
-                            className={url === '/admin/users' ? 
-                                "flex items-center w-full px-4 py-2" : 
-                                "flex items-center w-full px-4 py-2 hover:bg-red-500 hover:text-white"}
+                            className="flex items-center justify-center w-full px-4 py-2 hover:bg-red-500 hover:text-white"
                         >
-                            <ListItemIcon>
+                            <ListItemIcon sx={{marginRight: 0}}>
                                 <LogoutIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Log Out" />
+                            <ListItemText primary="Log Out" sx={{textAlign: "start"}}/>
                         </Link>
                     </ListItemButton>
                 </ListItem>
@@ -140,8 +138,8 @@ function AdminLayout(props) {
             <AppBar
                 position="fixed"
                 sx={{
-                    width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    ml: { sm: `${drawerWidth}px` },
+                    width: { md: `calc(100% - ${drawerWidth}px)` },
+                    ml: { md: `${drawerWidth}px` },
                 }}
             >
                 <Toolbar>
@@ -150,18 +148,18 @@ function AdminLayout(props) {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: "none" } }}
+                        sx={{ mr: 2, display: { md: "none" } }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        PSW Shopping
+                        PSW Mobile Second
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Box
                 component="nav"
-                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
                 aria-label="mailbox folders"
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -175,7 +173,7 @@ function AdminLayout(props) {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: "block", sm: "none" },
+                        display: { xs: "block", md: "none" },
                         "& .MuiDrawer-paper": {
                             boxSizing: "border-box",
                             width: drawerWidth,
@@ -187,7 +185,7 @@ function AdminLayout(props) {
                 <Drawer
                     variant="permanent"
                     sx={{
-                        display: { xs: "none", sm: "block" },
+                        display: { xs: "none", md: "block" },
                         "& .MuiDrawer-paper": {
                             boxSizing: "border-box",
                             width: drawerWidth,
@@ -204,6 +202,7 @@ function AdminLayout(props) {
                     flexGrow: 1,
                     p: 3,
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    overflow: 'hidden',
                 }}
             >
                 <Toolbar />

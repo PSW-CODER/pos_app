@@ -31,7 +31,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/products', [ProductController::class, 'index'])->name('product.list');
+    Route::post('/admin/products', [ProductController::class, 'store'])->name('store.product');
+    Route::post('/admin/products/{id}/update', [ProductController::class, 'update'])->name('update.product');
+    Route::post('/admin/products/{id}/delete', [ProductController::class, 'delete'])->name('delete.product');
     Route::get('/admin/users', [UserController::class, 'index'])->name('user.list');
+    Route::post('/admin/users/{id}/update', [UserController::class, 'update'])->name('update.user');
+    Route::post('/admin/users/{id}/delete', [UserController::class, 'delete'])->name('delete.user');
     Route::get('/admin/orders', [OrderRequestController::class, 'index'])->name('order.list');
 });
 
